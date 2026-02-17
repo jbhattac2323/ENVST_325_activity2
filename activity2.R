@@ -89,18 +89,20 @@ early.major<-floods%>%
 
 
 #Q3 Highest Stream Stage
-#Overall highest recorded
+#Overall highest recorded (extra step)
 highest.major<-floods%>%
   filter(gheight.ft>=major.ft)%>%
   group_by(names)%>%
   summarise(max_height=max(gheight.ft))
-#Answer:Peace River at 23.85ft but this is overall- lets check net increase from major stage baseline
-highest.major<-floods%>%
+#Peace River at 23.85ft but this is overall- lets check net increase from major stage baseline
+#Net increase- what the question asks for
+highest.increase<-floods%>%
   filter(gheight.ft>=major.ft)%>%
   group_by(names)%>%
-  summarise(max_height=max(gheight.ft-major.ft)) #net increase
+  summarise(max_increase=max(gheight.ft-major.ft)) #net increase
 #Answer:Peace River: 7.85ft more than major stage baseline
 
 #Q4 
 help(select, dplyr)
-
+help("ifelse")
+help("hist")
